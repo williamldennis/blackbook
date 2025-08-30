@@ -17,6 +17,8 @@ app.use(cors({
     'http://localhost:19001',
     'http://localhost:19002',
     'exp://localhost:8081',
+    'exp://192.168.1.91:8081', // Expo on network IP
+    'http://192.168.1.91:8081',
   ],
   credentials: true,
 }));
@@ -33,12 +35,16 @@ app.get('/health', (req, res) => {
   });
 });
 
-// Routes will be added here
+// Routes
+import notesRouter from './routes/notes';
+import queryRouter from './routes/query';
+app.use('/api', notesRouter);
+app.use('/api', queryRouter);
 
 // Error handling
 app.use(errorHandler);
 
-app.listen(PORT, () => {
-  console.log(`🚀 Server running on http://localhost:${PORT}`);
+app.listen(PORT, '0.0.0.0', () => {
+  console.log(`🚀 Server running on http://0.0.0.0:${PORT}`);
   console.log(`📋 Environment: ${process.env.NODE_ENV || 'development'}`);
 });
