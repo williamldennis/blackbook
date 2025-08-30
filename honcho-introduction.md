@@ -1,0 +1,122 @@
+# Honcho
+
+> Go beyond memory to agents with actual social intelligence
+
+When building agents developers often run into the same walls:
+
+> "My agent forgets everything between chats"
+
+You need memory: session management, message storage, context handling. It's table stakes, but surprisingly complex to get right.
+
+> "My agent treats everyone exactly the same"
+
+You need personalization: user modeling, preference learning, behavioral adaptation. Now you're building a [social cognition](../core-concepts/glossary#cognitive-science-terms) engine
+
+> "I'm writing infrastructure instead of features"
+
+You need Honcho
+
+<img src="https://mintcdn.com/plasticlabs/lVyHfvNDd8wveJyM/images/agent_hierarchy.png?maxW=3004&auto=format&n=lVyHfvNDd8wveJyM&q=85&s=81fe084f4ee9a4683cf1104a8f6060b8" alt="Honcho's Hiearchy of Agents" width="3004" height="1908" data-path="images/agent_hierarchy.png" srcset="https://mintcdn.com/plasticlabs/lVyHfvNDd8wveJyM/images/agent_hierarchy.png?w=280&maxW=3004&auto=format&n=lVyHfvNDd8wveJyM&q=85&s=1fd3c587e9170e6e71cb60cbb5f2ddef 280w, https://mintcdn.com/plasticlabs/lVyHfvNDd8wveJyM/images/agent_hierarchy.png?w=560&maxW=3004&auto=format&n=lVyHfvNDd8wveJyM&q=85&s=fa396eadc1d885983bfcf6e3e8be003e 560w, https://mintcdn.com/plasticlabs/lVyHfvNDd8wveJyM/images/agent_hierarchy.png?w=840&maxW=3004&auto=format&n=lVyHfvNDd8wveJyM&q=85&s=0d241b9b11bcee9a8b050308413ea06a 840w, https://mintcdn.com/plasticlabs/lVyHfvNDd8wveJyM/images/agent_hierarchy.png?w=1100&maxW=3004&auto=format&n=lVyHfvNDd8wveJyM&q=85&s=181773eda2845a5c4dedb433803ef996 1100w, https://mintcdn.com/plasticlabs/lVyHfvNDd8wveJyM/images/agent_hierarchy.png?w=1650&maxW=3004&auto=format&n=lVyHfvNDd8wveJyM&q=85&s=39b82ca9164792b30e3bde6e81406c0f 1650w, https://mintcdn.com/plasticlabs/lVyHfvNDd8wveJyM/images/agent_hierarchy.png?w=2500&maxW=3004&auto=format&n=lVyHfvNDd8wveJyM&q=85&s=5eda3c1b216ef40f529571e0fa12ae0c 2500w" data-optimize="true" data-opv="2" />
+
+Honcho delivers production-ready memory infrastructure from day one. Store
+conversations, manage sessions, get perfectly formatted context for any LLM.
+But here's the magic: while your agents are chatting, Honcho is learning. It
+builds Theory of Mind models automatically, transforming raw conversations into
+rich psychological understanding.
+
+```python
+# Start simple - just add messages
+session.add_messages([alice.message("I learn best with examples")])
+
+# Get powerful - query user psychology
+insight = peer.chat("How should I explain this concept?")
+# > "This user learns best through concrete examples..."
+```
+
+Your agents evolve from goldfish to counselor, on the same infrastructure. That's Honcho.
+
+Designed for developers and agents alike:
+
+* **Natural Language Queries**: Chat with Honcho in natural language via the [Dialectic API](../core-concepts/glossary#storage-%26-processing) and let agents backchannel
+* **Automatic Context Management**: Smart summarization that respects token limits
+* **Native multi-agent support**: Break out of User/Assistant Paradigms and build complex multi-agent systems
+* **Agent-first interfaces**: MCP connections and APIs designed for agents to consume and use as tools
+* **Provider Agnostic**: Works with any LLM or Agent Framework
+
+## How It Works
+
+### Storage
+
+Developers use Honcho to store information about their users and application via
+two integrated layers:
+
+<img src="https://mintcdn.com/plasticlabs/lVyHfvNDd8wveJyM/images/basic_honcho_flowchart.png?maxW=2426&auto=format&n=lVyHfvNDd8wveJyM&q=85&s=4ffe51d300a9cbc51e1541fa98b69412" alt="Basic Honcho Flowchart" width="2426" height="1056" data-path="images/basic_honcho_flowchart.png" srcset="https://mintcdn.com/plasticlabs/lVyHfvNDd8wveJyM/images/basic_honcho_flowchart.png?w=280&maxW=2426&auto=format&n=lVyHfvNDd8wveJyM&q=85&s=5cc9a802bbccddfeda80c184c6d5625f 280w, https://mintcdn.com/plasticlabs/lVyHfvNDd8wveJyM/images/basic_honcho_flowchart.png?w=560&maxW=2426&auto=format&n=lVyHfvNDd8wveJyM&q=85&s=7a80d3e96ac08bdae75ff320d71af0fe 560w, https://mintcdn.com/plasticlabs/lVyHfvNDd8wveJyM/images/basic_honcho_flowchart.png?w=840&maxW=2426&auto=format&n=lVyHfvNDd8wveJyM&q=85&s=46188a63580cd76bea516a96fdd7dc85 840w, https://mintcdn.com/plasticlabs/lVyHfvNDd8wveJyM/images/basic_honcho_flowchart.png?w=1100&maxW=2426&auto=format&n=lVyHfvNDd8wveJyM&q=85&s=eb26dfdb720598bdd077ab20d30d11ce 1100w, https://mintcdn.com/plasticlabs/lVyHfvNDd8wveJyM/images/basic_honcho_flowchart.png?w=1650&maxW=2426&auto=format&n=lVyHfvNDd8wveJyM&q=85&s=ac76cc9f3c738a558b6d17258ebb59e1 1650w, https://mintcdn.com/plasticlabs/lVyHfvNDd8wveJyM/images/basic_honcho_flowchart.png?w=2500&maxW=2426&auto=format&n=lVyHfvNDd8wveJyM&q=85&s=cea86ef9a2d16fb994bed3e8c9095617 2500w" data-optimize="true" data-opv="2" />
+
+**Memory Layer**: Captures all user interactions - messages, preferences, and
+behavioral patterns - in a peer-centric data model that scales from individual
+conversations to complex multi-agent scenarios. This also queues up messages for
+the reasoning layer to process.
+
+**Reasoning Layer**: Continuously analyzes stored interactions to build
+psychological profiles using [theory of mind](glossary#theory-of-mind)
+inference, extracting patterns about communication style, decision-making
+preferences, and mental models.
+
+### Retrieval
+
+Once data is stored and generated within Honcho, the API exposes several
+different ways to retrieve and use those insights.
+
+**[Dialectic API](../guides/dialectic-endpoint)**: This is the
+flagship endpoint that allows developers to send natural language queries to
+Honcho to chat with the representation of each user in your system to get
+dynamic, in-context actionable insights.
+
+Example Queries
+
+* "What's the best way to explain technical concepts to this user?"
+* "Is this user more task-oriented or relationship-oriented?"
+* "What time of day is this user most engaged?"
+* "How does this user prefer to receive feedback?"
+* "What are this user's core values based on our conversations?"
+
+**[Get Context](../guides/get-context)**: This endpoint abstracts context window
+constraints and continuously retrieves the most relevant and recent data from a
+conversation. Provide a token budget and Honcho will rturn a combination of
+summaries and messages that pvoide session context. Use this for creating
+long-running conversations. We crafted our summaries to provide the most
+[coverage of a session possible](../core-concepts/summarizer).
+
+**[Search](../guides/search)**: This endpoint allows you to search across Honcho
+for relevant messages either at the workspace, peer, or session level. This
+endpoint uses a hybrid search strategy that combines text search and cosine
+similarity.
+
+**[Working Representations](../guides/working-rep)**: Get a cached, snapshot
+of a user in the context of a session. Instead of waiting for an LLM to
+synthesize an in-context response via the Dialectic endpoint, use this to get
+recent insights you can plug into your context window.
+
+## Ideal For
+
+**Personalized AI assistants** that need to understand individual psychology, not just remember conversations.
+
+**Customer-facing agents** that must adapt their approach based on user communication preferences and emotional context.
+
+**Multi-agent systems** where AI needs to understand human collaborators' working styles and decision-making patterns.
+
+**NPCs** where you want autonomous agents with a rich and deep personality that isn't the average sycophantic llm
+
+## Getting Started
+
+Ready to integrate Honcho into your application?
+
+<CardGroup cols={2}> <Card title="Quickstart Guide" icon="rocket" href="/v2/documentation/introduction/quickstart"> Get up and running with
+Honcho in minutes </Card> <Card title="Core Concepts" icon="brain" href="/v2/documentation/core-concepts/glossary"> Understand Honcho's
+fundamental concepts </Card> </CardGroup>
+
+## Community & Support
+
+* **GitHub**: [plastic-labs/honcho](https://github.com/plastic-labs/honcho)
+* **Discord**: [Join our community](http://discord.gg/plasticlabs)
+* **Issues**: Report bugs and request features on GitHub

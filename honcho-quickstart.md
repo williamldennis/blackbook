@@ -1,0 +1,217 @@
+# Quickstart
+
+> Start building with Honcho in under 5 minutes.
+
+For production-level use, Honcho offers two powerful ways to leverage ambient personalization: our managed platform and our open source solution. Read further if you want to explore the quickstart demo.
+
+<CardGroup cols={2}>
+  <Card title="Honcho Platform" icon="cloud" href="https://app.honcho.dev">
+    Fully managed, hassle-free solution with one-click deployment
+  </Card>
+
+  <Card title="Honcho Open Source" icon="github" href="https://github.com/plastic-labs/honcho">
+    Self-hosted, fully customizable, and open source
+  </Card>
+</CardGroup>
+
+# Getting Started
+
+Have your project use Honcho's ambient personalization capabilities in just a few steps. No signup required!
+
+<Info>
+  By default, the SDK uses the demo server hosted at demo.honcho.dev. The demo server is meant for quick experimentation and the data is cleared on a regular basis. Do not use for production applications.
+
+  For production use:
+
+  1. Get your API key at [app.honcho.dev/api-keys](https://app.honcho.dev/api-keys)
+  2. Set `environment="production"` and provide your `api_key`
+</Info>
+
+## 1. Install the SDK
+
+<CodeGroup>
+  ```bash Python (uv)
+  uv add honcho-ai
+  ```
+
+  ```bash Python (pip)
+  pip install honcho-ai
+  ```
+
+  ```bash TypeScript (npm)
+  npm install @honcho-ai/sdk
+  ```
+
+  ```bash TypeScript (yarn)
+  yarn add @honcho-ai/sdk
+  ```
+
+  ```bash TypeScript (pnpm)
+  pnpm add @honcho-ai/sdk
+  ```
+</CodeGroup>
+
+## 2. Initialize the Client
+
+The Honcho client is the main entry point for interacting with Honcho's API. By default, it uses the demo environment and a default workspace.
+
+### Demo Environment (Default)
+
+<CodeGroup>
+  ```python Python
+  from honcho import Honcho
+
+  # Initialize client (uses demo environment and default workspace)
+  client = Honcho()
+
+  ```
+
+  ```typescript TypeScript
+  import { Honcho } from '@honcho-ai/sdk';
+
+  // Initialize client (uses demo environment and default workspace)
+  const client = new Honcho({});
+
+  ```
+</CodeGroup>
+
+### Production Environment
+
+<CodeGroup>
+  ```python Python
+  import os
+  from honcho import Honcho
+
+  # Production environment with API key
+  client = Honcho(
+      api_key=os.environ["HONCHO_API_KEY"],
+      environment="production",
+      # Create a workspace, otherwise set to "default"
+      # workspace="your-workspace-id"
+  )
+  ```
+
+  ```typescript TypeScript
+  import { Honcho } from '@honcho-ai/sdk';
+
+  // Production environment with API key
+  const client = new Honcho({
+      apiKey: process.env.HONCHO_API_KEY!,
+      environment: "production",
+      // Create a workspace, otherwise set to "default"
+      // workspace: "your-workspace-id"
+  });
+  ```
+</CodeGroup>
+
+## 3. Create Peers
+
+Peers represent individual users, AI agents, or any conversational entity in your system:
+
+<CodeGroup>
+  ```python Python
+  alice = client.peer("alice")
+  bob = client.peer("bob")
+  ```
+
+  ```typescript TypeScript
+  const alice = await client.peer("alice")
+  const bob = await client.peer("bob")
+  ```
+</CodeGroup>
+
+## 4. Create a Session
+
+Sessions are independent conversations that can include multiple peers:
+
+<CodeGroup>
+  ```python Python
+  session = client.session("session_1")
+  session.add_peers([alice, bob])
+  ```
+
+  ```typescript TypeScript
+  const session = await client.session("session_1")
+  await session.addPeers([alice, bob])
+  ```
+</CodeGroup>
+
+## 5. Add Messages
+
+Add some conversation messages. Honcho automatically learns from these interactions:
+
+<CodeGroup>
+  ```python Python
+  session.add_messages([
+      alice.message("Hi Bob, how are you?"),
+      bob.message("I'm good, thank you!"),
+      alice.message("What are you doing today after work?"),
+      bob.message("I'm going to the gym! I've been trying to get back in shape."),
+      alice.message("That's great! I should probably start exercising too."),
+      bob.message("You should! I find that evening workouts help me relax."),
+  ])
+  ```
+
+  ```typescript TypeScript
+  await session.addMessages([
+      alice.message("Hi Bob, how are you?"),
+      bob.message("I'm good, thank you!"),
+      alice.message("What are you doing today after work?"),
+      bob.message("I'm going to the gym! I've been trying to get back in shape."),
+      alice.message("That's great! I should probably start exercising too."),
+      bob.message("You should! I find that evening workouts help me relax."),
+  ])
+  ```
+</CodeGroup>
+
+## 6. Query for Insights
+
+Now ask Honcho what it's learned - this is where the magic happens:
+
+<CodeGroup>
+  ```python Python
+  # Ask what Bob is like
+  response = alice.chat("Tell me about Bob's interests and habits")
+  print(response)
+
+  # Returns rich context like:
+  # "Bob is health-conscious and has been working on getting back in shape.
+  # He regularly goes to the gym, particularly in the evenings, and finds
+  # exercise helps him relax. He's encouraging about fitness and willing
+  # to share advice about workout routines."
+  ```
+
+  ```typescript TypeScript
+  (async () => {
+      // Ask what Bob is like
+      const response = await alice.chat("Tell me about Bob's interests and habits");
+      console.log(response);
+
+      // Returns rich context like:
+      // "Bob is health-conscious and has been working on getting back in shape.
+      // He regularly goes to the gym, particularly in the evenings, and finds
+      // exercise helps him relax. He's encouraging about fitness and willing
+      // to share advice about workout routines."
+  })();
+  ```
+</CodeGroup>
+
+## What Just Happened?
+
+Honcho automatically built rich psychological profiles from just a few messages:
+
+* **Theory of Mind Processing**: Understanding personality, preferences, and patterns
+* **Ambient Learning**: No surveys or explicit training - just natural conversation
+* **Rich Context**: Far more detailed than simple conversation history
+
+The response isn't just retrieving stored text - it's synthesizing insights about Bob's personality, habits, and communication style.
+
+## Next Steps
+
+This covers the core concepts: **peers**, **sessions**, **messages**, and **dialectic queries**.
+
+* For production use, [sign up for the managed platform](https://app.honcho.dev) or get an [overview here](/v2/documentation/platform/overview).
+* For detailed API reference, check out our [SDK documentation](/v2/documentation/platform/sdk).
+* For more examples, explore our [guides](/v2/guides).
+
+***
